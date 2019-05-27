@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  # This service should just route traffic to /v1 and /v2
+  nginx: 
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+      - 443:443
+
+  nginx1: 
+    image: nginx:latest
+    container_name: nginx1
+    volumes:
+      - ./index1.html:/usr/share/nginx/html/index.html
+ 
+  nginx2: 
+    image: nginx:latest
+    container_name: nginx2
+    volumes:
+      - ./index2.html:/usr/share/nginx/html/index.html
